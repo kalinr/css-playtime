@@ -7,11 +7,31 @@
   <meta name="description" content="Just Kalin's place to play around with CSS animations" />
   <meta name="robots" content="index, follow" />
   <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="_animate.css" media="screen" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    	var aStrings = ["Tacky CSS Animations!", "In your face."],
+    	nStringIndex = 0;
+    	$('#text1').text(aStrings[nStringIndex]);
+    	$('#text1').addClass('fadeIn');	
+    	    	
+    	/*
+      $('.effects-list a').click(function(){
+        $('#effect-examples').removeClass().addClass($(this).text());
+        return false;
+      });
+    	*/
+    });
+  
+  
+  </script>
+  
 </head>
 <body>
-
-  <div id="circle">  </div>
+  <div id="wrapper">
+    <div id="text1" class="text_holder"></div>
+    <div id="text2" class="text_holder"></div>
+  </div>
 
 </body>
 </html>
