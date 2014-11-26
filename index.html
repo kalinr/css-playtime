@@ -14,36 +14,45 @@
     	var nCurIndex = 0,
     	nTotalDivs = 2,
     	aAnimParams = [
-      {str:"CSS Playground!", class:"tada text_holder", div:"text0"},
-      {str:"with really big, obnoxious text", class:"fadeInRight text_holder", div:"text1"},
-      {str:"I'm just screwing around with animations, like this slow blink", class:"slowBlink text_holder", div:"text1"}
+      {str:"CSS Playground!", 
+    	  inClass:"tada text_holder", div:"text0", inDelay:6000, outDelay:11000, outClass:"bounceOutUp text_holder"},
+      {str:"with really big, obnoxious text", 
+    		inClass:"fadeInRight text_holder", div:"text1", inDelay:3000, outDelay:3000, outClass:"bounceOutDown text_holder"},
+      {str:"I'm just screwing around with animations, like this slow blink", 
+    	  inClass:"slowBlink text_holder", div:"text1", inDelay:5000, outDelay:3000, outClass:"bounceOutDown text_holder"}
     	               ];
-    	    	
-    	function doNext(){
+
+    	function showNext(){
     		
-    		var nPrevIndex = nCurIndex - 1,
-    		oCurItem = aAnimParams[nCurIndex],
+    		console.log("shownext");
+    		
+    		var oCurItem = aAnimParams[nCurIndex],
     		oCurDiv = $("#" + oCurItem.div);
-    		
-    		if(nPrevIndex === -1){
-    			nPrevIndex = aAnimParams.length - 1;
-    		}
     		
     		//insert string into div and remove all classes
     		oCurDiv.text(oCurItem.str)
     		  .removeClass()
-    		  .addClass(oCurItem.class);
+    		  .addClass(oCurItem.inClass);
     		
     	  nCurIndex++;
-    	  
     	  if(nCurIndex === aAnimParams.length){
-    		  nCurIndex = 0;
+    		  nCurIndex = 0;    		  
     	  }
     	  
-    	  setTimeout(doNext, 3000);
+    	  //grab the inDelay from the next item to see how long to wait before showing it
+    	  setTimeout(showNext, aAnimParams[nCurIndex].inDelay);
+    	  setTimeout(function(){
+    		  hideDiv(oCurItem.div, oCurItem.outClass);
+    	  }, oCurItem.outDelay);
     	}
     	
-    	doNext();
+    	function hideDiv(div, outClass){
+    	  $("#" + div).removeClass()
+    	    .addClass(outClass);
+    	}
+    	
+    	//note that the inDelay does not apply to the very first item. It's animation is shown immediately. Otherwise, here we'd call showNext on a timeout
+    	showNext();
 
     });
   </script>
