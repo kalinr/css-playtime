@@ -7,32 +7,37 @@ body
   margin: 0px
   
 #wrapper
-  position: absolute
   background-color: #ccc
   width: 100%
   height: 300px
   margin: 0px
   padding: 0px
+  overflow: hidden //prevents scrollbars from randomly showing and moving our elements
   
 .text_holder
-  border: 1px solid
   margin-top: 50px
   margin-left: auto
   margin-right: auto
   width: 300px
   text-align: center
-  
+
+.title
+  font-size: 40px
+  color: red
+
+//calls 2 second animation of tada "both" refers to showing beginning and end of animation 
+//before and after animation is doing its thing
 .tada
-  -webkit-animation: tada 2s
-  -moz-animation: tada 2s
-  -ms-animation: tada 2s
-  animation: tada 2s
+  -webkit-animation: tada 2s both
+  -moz-animation: tada 2s both
+  -ms-animation: tada 2s both
+  animation: tada 2s both
   
 .fadeInRight
-  -webkit-animation: fadeInRight 2s
-  -moz-animation: fadeInRight 2s
-  -ms-animation: fadeInRight 2s
-  animation: fadeInRight 2s
+  -webkit-animation: fadeInRight 2s both
+  -moz-animation: fadeInRight 2s both
+  -ms-animation: fadeInRight 2s both
+  animation: fadeInRight 2s both
 
 .bounceOutDown
   -webkit-animation: bounceOutDown 2s both
@@ -47,13 +52,13 @@ body
   animation: bounceOutUp 2s both
   
 .slowBlink
-  -webkit-animation: fadeIn 1s infinite alternate
-  -moz-animation: fadeIn 1s infinite alternate
-  -ms-animation: fadeIn 1s infinite alternate
-  animation: fadeIn 1s infinite alternate
+  -webkit-animation: fadeIn .6s infinite alternate both
+  -moz-animation: fadeIn .6s infinite alternate both
+  -ms-animation: fadeIn .6s infinite alternate both
+  animation: fadeIn .6s infinite alternate both
   
 .fadeOut
-  -webkit-animation: fadeOut
-  -moz-animation: fadeOut
-  -ms-animation: fadeOut
-  animation: fadeOut
+  -webkit-animation: fadeOut both
+  -moz-animation: fadeOut both
+  -ms-animation: fadeOut both
+  animation: fadeOut both
