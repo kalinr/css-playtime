@@ -9,18 +9,42 @@
   <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
+    "use strict";
     $(document).ready(function(){
-    	var aStrings = ["Tacky CSS Animations!", "In your face."],
-    	nStringIndex = 0;
-    	$('#text1').text(aStrings[nStringIndex]);
-    	$('#text1').addClass('fadeIn');	
-    	    	
-    	/*
-      $('.effects-list a').click(function(){
-        $('#effect-examples').removeClass().addClass($(this).text());
-        return false;
-      });
-    	*/
+    	var nCurIndex = 0,
+    	curDiv = $('#text1'),
+    	aAnimParams = [
+      {str:"CSS Playground!", class:"tada"},
+      {str:"with really big, obnoxious text", class:"fadeInRight"},
+      {str:"I'm just screwing around with animations, like this slow blink", class:"slowBlink"}
+    	               ];
+    	
+    	$('#text1').hide();
+    	
+    	function doNext(){
+    		
+    		var nPrevIndex = nCurIndex - 1,
+    		oCurItem = aAnimParams[nCurIndex];
+    		
+    		if(nPrevIndex === -1){
+    			nPrevIndex = aAnimParams.length - 1;
+    		}
+    		    		
+    		$('#text0').text(oCurItem.str)
+    	    .removeClass(aAnimParams[nPrevIndex].class)
+    	    .addClass(oCurItem.class);
+    		
+    	  nCurIndex++;
+    	  
+    	  if(nCurIndex === aAnimParams.length){
+    		  nCurIndex = 0;
+    	  }
+    	  
+    	  setTimeout(doNext, 3000);
+    	}
+    	
+    	doNext();
+
     });
   
   
@@ -29,8 +53,8 @@
 </head>
 <body>
   <div id="wrapper">
+    <div id="text0" class="text_holder"></div>
     <div id="text1" class="text_holder"></div>
-    <div id="text2" class="text_holder"></div>
   </div>
 
 </body>
