@@ -12,27 +12,27 @@
     "use strict";
     $(document).ready(function(){
     	var nCurIndex = 0,
-    	curDiv = $('#text1'),
+    	nTotalDivs = 2,
     	aAnimParams = [
-      {str:"CSS Playground!", class:"tada"},
-      {str:"with really big, obnoxious text", class:"fadeInRight"},
-      {str:"I'm just screwing around with animations, like this slow blink", class:"slowBlink"}
+      {str:"CSS Playground!", class:"tada text_holder", div:"text0"},
+      {str:"with really big, obnoxious text", class:"fadeInRight text_holder", div:"text1"},
+      {str:"I'm just screwing around with animations, like this slow blink", class:"slowBlink text_holder", div:"text1"}
     	               ];
-    	
-    	$('#text1').hide();
-    	
+    	    	
     	function doNext(){
     		
     		var nPrevIndex = nCurIndex - 1,
-    		oCurItem = aAnimParams[nCurIndex];
+    		oCurItem = aAnimParams[nCurIndex],
+    		oCurDiv = $("#" + oCurItem.div);
     		
     		if(nPrevIndex === -1){
     			nPrevIndex = aAnimParams.length - 1;
     		}
-    		    		
-    		$('#text0').text(oCurItem.str)
-    	    .removeClass(aAnimParams[nPrevIndex].class)
-    	    .addClass(oCurItem.class);
+    		
+    		//insert string into div and remove all classes
+    		oCurDiv.text(oCurItem.str)
+    		  .removeClass()
+    		  .addClass(oCurItem.class);
     		
     	  nCurIndex++;
     	  
@@ -46,16 +46,13 @@
     	doNext();
 
     });
-  
-  
   </script>
-  
 </head>
+
 <body>
   <div id="wrapper">
-    <div id="text0" class="text_holder"></div>
-    <div id="text1" class="text_holder"></div>
+    <div id="text0"></div>
+    <div id="text1"></div>
   </div>
-
 </body>
 </html>
