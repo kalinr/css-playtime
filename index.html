@@ -12,9 +12,10 @@
     "use strict";
     $(document).ready(function(){
     	var nCurIndex = 0,
-    	nTotalDivs = 2,
+    	nRepeatCount = 0,
+    	nIteration = 0,
     	aAnimParams = [
-      {str:"CSS Playground!", 
+      /*{str:"CSS Playground!", 
     	  inClass:"tada text_holder title", div:"text0", inDelay:8000, outDelay:11000, outClass:"bounceOutUp text_holder title"},
       {str:"with really big, obnoxious text", 
     		inClass:"fadeInRight text_holder", div:"text1", inDelay:3000, outDelay:3000, outClass:"bounceOutDown text_holder"},
@@ -27,8 +28,12 @@
     	{str:"Now it briefly becomes a circle!", 
     	  inClass:"fadeIn text_holder title", div:"text0", inDelay:5000, outDelay:3000, outClass:"fadeOut text_holder title"},
     	{str:"", 
-    	  inClass:"square squareToCircle", div:"text1", inDelay:0, outDelay:4500, outClass:"bounceOutDown square"}//now animate that square to a circle and back, then bounce it out
-    	               ];
+    	  inClass:"square squareToCircle", div:"text1", inDelay:0, outDelay:4500, outClass:"bounceOutDown square"},*///now animate that square to a circle and back, then bounce it out
+    	{str:"", 
+    	  inClass:"slideLeft circleLeft", div:"text1", inDelay:6000},
+    	{str:"", 
+    	  inClass:"squishedCircle", div:"text1", inDelay:2000, outDelay:200,}
+    	        ];
 
     	function showNext(){    		
     		var oCurItem = aAnimParams[nCurIndex],
@@ -41,7 +46,13 @@
     		
     	  nCurIndex++;
     	  if(nCurIndex === aAnimParams.length){
-    		  nCurIndex = 0;    		  
+    		  
+    		  if(nRepeatCount > -1 && nRepeatCount === nIteration){
+    			  return;
+    		  }
+    		  
+    		  nCurIndex = 0;
+    		  nIteration++
     	  }
     	  
     	  //grab the inDelay from the next item to see how long to wait before showing it

@@ -1719,3 +1719,20 @@
     transform: scale(1.1) rotate(3deg)
   100%
     transform: scale(1) rotate(0)
+
+//TODO: be sure to make this work in the other browsers   
+@-webkit-keyframes slideLeft
+  0%
+    opacity: 0
+    -webkit-transform: translateX(2000px)
+  100%
+    opacity: 1
+    -webkit-transform: translateX(0)
+    
+@-webkit-keyframes slideRight
+  0%
+    opacity: 0
+    -webkit-transform: translateX(0)
+  100%
+    opacity: 1
+    -webkit-transform: translateX(2000px)
