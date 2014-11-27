@@ -1,4 +1,5 @@
 @import _animate.sass
+@import squareToCircle.css
 
 body
   background: azure
@@ -15,7 +16,7 @@ body
   overflow: hidden //prevents scrollbars from randomly showing and moving our elements
   
 .text_holder
-  margin-top: 50px
+  margin-top: 30px
   margin-left: auto
   margin-right: auto
   width: 300px
@@ -25,7 +26,7 @@ body
   font-size: 40px
   color: red
 
-//calls 2 second animation of tada "both" refers to showing beginning and end of animation 
+//calls 2 second animation of tada. "both" refers to showing beginning and end of animation 
 //before and after animation is doing its thing
 .tada
   -webkit-animation: tada 2s both
@@ -56,9 +57,30 @@ body
   -moz-animation: fadeIn .6s infinite alternate both
   -ms-animation: fadeIn .6s infinite alternate both
   animation: fadeIn .6s infinite alternate both
+
+.fadeIn
+  -webkit-animation: fadeIn 2s ease-in both
+  -moz-animation: fadeIn 2s ease-in both
+  -ms-animation: fadeIn 2s ease-in both
+  animation: fadeIn 2s ease-in both
   
 .fadeOut
-  -webkit-animation: fadeOut both
-  -moz-animation: fadeOut both
-  -ms-animation: fadeOut both
-  animation: fadeOut both
+  -webkit-animation: fadeOut 2s both
+  -moz-animation: fadeOut 2s both
+  -ms-animation: fadeOut 2s both
+  animation: fadeOut 2s both
+
+.square
+  margin-top: 50px
+  margin-left: auto
+  margin-right: auto
+  width: 100px
+  height: 100px
+  background-color: coral
+
+.squareToCircle
+  -webkit-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both
+  -moz-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both
+  -ms-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both
+  -o-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both
+  animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both

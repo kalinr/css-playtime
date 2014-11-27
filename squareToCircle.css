@@ -3,21 +3,6 @@ body {
   font-size:15px;
 }
 
-div {
-  position:absolute !important;
-  top:calc(50% - 100px);
-  left:calc(50% - 100px);
-  width: 200px;
-  height: 200px;
-  background-color: coral;
-  -webkit-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate;
-  -moz-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate;
-  -ms-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate;
-  -o-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate;
-  animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate;
-}
-
-
 @-webkit-keyframes square-to-circle {
   0%  {
     border-radius:0 0 0 0;
