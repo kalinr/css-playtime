@@ -1,3 +1,5 @@
+$vendors: "-webkit-" "-moz-" "-ms-" "-o-" ""  
+
 @import _animate.sass
 @import squareToCircle.css
 
@@ -26,49 +28,36 @@ body
   font-size: 40px
   color: red
 
+//loop once for each vendor to create all our animations
 //calls 2 second animation of tada. "both" refers to showing beginning and end of animation 
 //before and after animation is doing its thing
-.tada
-  -webkit-animation: tada 2s both
-  -moz-animation: tada 2s both
-  -ms-animation: tada 2s both
-  animation: tada 2s both
-  
-.fadeInRight
-  -webkit-animation: fadeInRight 2s both
-  -moz-animation: fadeInRight 2s both
-  -ms-animation: fadeInRight 2s both
-  animation: fadeInRight 2s both
-
-.bounceOutDown
-  -webkit-animation: bounceOutDown 2s both
-  -moz-animation: bounceOutDown 2s both
-  -ms-animation: bounceOutDown 2s both
-  animation: bounceOutDown 2s both
-
-.bounceOutUp
-  -webkit-animation: bounceOutUp 2s both
-  -moz-animation: bounceOutUp 2s both
-  -ms-animation: bounceOutUp 2s both
-  animation: bounceOutUp 2s both
-  
-.slowBlink
-  -webkit-animation: fadeIn .6s infinite alternate both
-  -moz-animation: fadeIn .6s infinite alternate both
-  -ms-animation: fadeIn .6s infinite alternate both
-  animation: fadeIn .6s infinite alternate both
-
-.fadeIn
-  -webkit-animation: fadeIn 2s ease-in both
-  -moz-animation: fadeIn 2s ease-in both
-  -ms-animation: fadeIn 2s ease-in both
-  animation: fadeIn 2s ease-in both
-  
-.fadeOut
-  -webkit-animation: fadeOut 2s both
-  -moz-animation: fadeOut 2s both
-  -ms-animation: fadeOut 2s both
-  animation: fadeOut 2s both
+@each $vendor in $vendors
+  .tada  
+    #{$vendor}animation: tada 2s both
+    
+  .fadeInRight
+    #{$vendor}animation: fadeInRight 2s both
+    
+  .bounceOutDown
+    #{$vendor}animation: bounceOutDown 2s both
+    
+  .bounceOutUp
+    #{$vendor}animation: bounceOutUp 2s both
+    
+  .slowBlink
+    #{$vendor}animation: fadeIn .6s infinite alternate both
+    
+  .fadeIn
+    #{$vendor}animation: fadeIn 2s ease-in both
+    
+  .fadeOut
+    #{$vendor}animation: fadeOut 2s both
+    
+  .squareToCircle
+    #{$vendor}animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both
+    
+  .slideLeft
+    #{$vendor}animation: slideLeft 2s ease-in both
 
 .square
   margin-top: 50px
@@ -91,16 +80,3 @@ body
   height: 100px
   background-color: coral
   border-radius: 50%
-
-.squareToCircle
-  -webkit-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both
-  -moz-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both
-  -ms-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both
-  -o-animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both
-  animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both
-  
-.slideLeft
-  -webkit-animation: slideLeft 2s ease-in both
-  -moz-animation: slideLeft 2s ease-in both
-  -ms-animation: slideLeft 2s ease-in both
-  animation: slideLeft 2s ease-in both

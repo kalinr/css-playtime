@@ -410,32 +410,6 @@
     -webkit-transform: rotate(200deg)
     opacity: 0
 
-@-webkit-keyframes tada
-  0%
-    -webkit-transform: scale(0) 
-    opacity: 0
-  10%
-    -webkit-transform: scale(0.9) rotate(-3deg)
-  20%
-    -webkit-transform: scale(0.9) rotate(-3deg)
-  30%
-    -webkit-transform: scale(1.1) rotate(3deg)
-  40%
-    -webkit-transform: scale(1.1) rotate(-3deg)
-  50%
-    -webkit-transform: scale(1.1) rotate(3deg)
-  60%
-    -webkit-transform: scale(1.1) rotate(-3deg)
-  70%
-    -webkit-transform: scale(1.1) rotate(3deg)
-  80%
-    -webkit-transform: scale(1.1) rotate(-3deg)
-  90%
-    -webkit-transform: scale(1.1) rotate(3deg)
-    opacity: 1
-  100%
-    -webkit-transform: scale(1) rotate(0)
-
 @-moz-keyframes fadeIn
   0%
     opacity: 0
@@ -839,30 +813,6 @@
     -moz-transform-origin: center center
     -moz-transform: rotate(200deg)
     opacity: 0
-
-@-moz-keyframes tada
-  0%
-    -moz-transform: scale(1)
-  10%
-    -moz-transform: scale(0.9) rotate(-3deg)
-  20%
-    -moz-transform: scale(0.9) rotate(-3deg)
-  30%
-    -moz-transform: scale(1.1) rotate(3deg)
-  40%
-    -moz-transform: scale(1.1) rotate(-3deg)
-  50%
-    -moz-transform: scale(1.1) rotate(3deg)
-  60%
-    -moz-transform: scale(1.1) rotate(-3deg)
-  70%
-    -moz-transform: scale(1.1) rotate(3deg)
-  80%
-    -moz-transform: scale(1.1) rotate(-3deg)
-  90%
-    -moz-transform: scale(1.1) rotate(3deg)
-  100%
-    -moz-transform: scale(1) rotate(0)
 
 @-ms-keyframes fadeIn
   0%
@@ -1268,30 +1218,6 @@
     -ms-transform: rotate(200deg)
     opacity: 0
 
-@-ms-keyframes tada
-  0%
-    -ms-transform: scale(1)
-  10%
-    -ms-transform: scale(0.9) rotate(-3deg)
-  20%
-    -ms-transform: scale(0.9) rotate(-3deg)
-  30%
-    -ms-transform: scale(1.1) rotate(3deg)
-  40%
-    -ms-transform: scale(1.1) rotate(-3deg)
-  50%
-    -ms-transform: scale(1.1) rotate(3deg)
-  60%
-    -ms-transform: scale(1.1) rotate(-3deg)
-  70%
-    -ms-transform: scale(1.1) rotate(3deg)
-  80%
-    -ms-transform: scale(1.1) rotate(-3deg)
-  90%
-    -ms-transform: scale(1.1) rotate(3deg)
-  100%
-    -ms-transform: scale(1) rotate(0)
-
 @keyframes fadeIn
   0%
     opacity: 0
@@ -1696,43 +1622,92 @@
     transform: rotate(200deg)
     opacity: 0
 
-@keyframes tada
+@mixin tada($vendor)
   0%
-    transform: scale(1)
+    #{$vendor}transform: scale(1)
   10%
-    transform: scale(0.9) rotate(-3deg)
+    #{$vendor}transform: scale(0.9) rotate(-3deg)
   20%
-    transform: scale(0.9) rotate(-3deg)
+    #{$vendor}transform: scale(0.9) rotate(-3deg)
   30%
-    transform: scale(1.1) rotate(3deg)
+    #{$vendor}transform: scale(1.1) rotate(3deg)
   40%
-    transform: scale(1.1) rotate(-3deg)
+    #{$vendor}transform: scale(1.1) rotate(-3deg)
   50%
-    transform: scale(1.1) rotate(3deg)
+    #{$vendor}transform: scale(1.1) rotate(3deg)
   60%
-    transform: scale(1.1) rotate(-3deg)
+    #{$vendor}transform: scale(1.1) rotate(-3deg)
   70%
-    transform: scale(1.1) rotate(3deg)
+    #{$vendor}transform: scale(1.1) rotate(3deg)
   80%
-    transform: scale(1.1) rotate(-3deg)
+    #{$vendor}transform: scale(1.1) rotate(-3deg)
   90%
-    transform: scale(1.1) rotate(3deg)
+    #{$vendor}transform: scale(1.1) rotate(3deg)
   100%
-    transform: scale(1) rotate(0)
+    #{$vendor}transform: scale(1) rotate(0)
+    
+@-webkit-keyframes tada
+  @include tada("-webkit-")
 
-//TODO: be sure to make this work in the other browsers   
-@-webkit-keyframes slideLeft
+@-moz-keyframes tada
+  @include tada("-moz-")
+  
+@-ms-keyframes tada
+  @include tada("-ms-")
+
+@-o-keyframes tada
+  @include tada("-o-")
+
+@keyframes tada
+  @include tada("")
+
+
+
+@mixin slideLeft($vendor)
   0%
     opacity: 0
-    -webkit-transform: translateX(2000px)
+    #{$vendor}transform: translateX(2000px)
   100%
     opacity: 1
-    -webkit-transform: translateX(0)
+    #{$vendor}transform: translateX(0)
+    
+@-webkit-keyframes slideLeft
+  @include slideLeft("-webkit-")
+
+@-moz-keyframes slideLeft
+  @include slideLeft("-moz-")
+  
+@-ms-keyframes slideLeft
+  @include slideLeft("-ms-")
+
+@-o-keyframes slideLeft
+  @include slideLeft("-o-")
+
+@keyframes slideLeft
+  @include slideLeft("")
+  
+  
+
+    
+@mixin slideRight($vendor)
+  0%
+    opacity: 0
+    #{$vendor}transform: translateX(0)
+  100%
+    opacity: 1
+    #{$vendor}transform: translateX(2000px)
     
 @-webkit-keyframes slideRight
-  0%
-    opacity: 0
-    -webkit-transform: translateX(0)
-  100%
-    opacity: 1
-    -webkit-transform: translateX(2000px)
+  @include slideRight("-webkit-")
+
+@-moz-keyframes slideRight
+  @include slideRight("-moz-")
+  
+@-ms-keyframes slideRight
+  @include slideRight("-ms-")
+
+@-o-keyframes slideRight
+  @include slideRight("-o-")
+
+@keyframes slideRight
+  @include slideRight("")
