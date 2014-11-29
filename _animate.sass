@@ -1711,3 +1711,23 @@
 
 @keyframes slideRight
   @include slideRight("")
+  
+  
+  
+$includedAnimations: "tada" "slideLeft" "slideRight"
+
+@$each $includedAnimation in $includedAnimations
+  @-webkit-keyframes anim#{$includedAnimation}
+    @include #{$includedAnimation}("-webkit-")
+
+  @-moz-keyframes anim#{$includedAnimation}
+    @include anim#{$includedAnimation}("-moz-")
+  
+  @-ms-keyframes #{$includedAnimation}
+    @include anim#{$includedAnimation}("-ms-")
+
+  @-o-keyframes anim#{$includedAnimation}
+    @include anim#{$includedAnimation}("-o-")
+
+  @keyframes anim#{$includedAnimation}
+    @include anim#{$includedAnimation}("")
