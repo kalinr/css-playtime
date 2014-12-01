@@ -8,13 +8,12 @@
   <meta name="robots" content="index, follow" />
   <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="CSSTimeline.js" type="text/javascript" charset="utf-8"></script>
+  
   <script type="text/javascript">
     "use strict";
     $(document).ready(function(){
-    	var nCurIndex = 0,
-    	nRepeatCount = 0,
-    	nIteration = 0,
-    	aAnimParams = [
+    	var aAnimParams = [
       {str:"CSS Playground!", 
     	  inClass:"tada text_holder title", div:"text0", inDelay:8000, outDelay:11000, outClass:"bounceOutUp text_holder title"},
       {str:"with really big, obnoxious text", 
@@ -28,53 +27,17 @@
     	{str:"Now it briefly becomes a circle!", 
     	  inClass:"fadeIn text_holder title", div:"text0", inDelay:5000, outDelay:3000, outClass:"fadeOut text_holder title"},
     	{str:"", 
-    	  inClass:"square squareToCircle", div:"text1", inDelay:0, outDelay:4500, outClass:"bounceOutDown square"},//now animate that square to a circle and back, then bounce it out
+    	  inClass:"square squareToCircle", div:"text1", inDelay:0, outDelay:4500, outClass:"bounceOutDown square"}, //now animate that square to a circle and back, then bounce it out
     	{str:"", 
     	  inClass:"slideLeft circle", div:"text1", inDelay:6000},
     	{str:"", 
     	  inClass:"squishedCircle", div:"text1", inDelay:1000, outDelay:100, outClass:"slideRight circle"}
     	        ];
 
-    	function showNext(){    		
-    		var oCurItem = aAnimParams[nCurIndex],
-    		oCurDiv = $("#" + oCurItem.div);
-    		
-    		//insert string into div and remove all classes
-    		oCurDiv.text(oCurItem.str)
-    		  .removeClass()
-    		  .addClass(oCurItem.inClass);
-    		
-        if(oCurItem.outDelay){
-            setTimeout(function(){
-              console.log(oCurItem.outClass);
-              showOutClass(oCurItem.div, oCurItem.outClass);
-            }, oCurItem.outDelay);
-          }
-    		
-    		
-    	  nCurIndex++;
-    	  if(nCurIndex === aAnimParams.length){//if we're at the end of the timeline
-    		  
-    		  //and if repeatCount isn't -1 (infinite) AND we've fulfilled every iteration to match our repeat count, then we are done. Get out before calling showNext() 
-    		  if(nRepeatCount > -1 && nRepeatCount === nIteration){
-    			  return;
-    		  }
-    		  
-    		  nCurIndex = 0;
-    		  nIteration++
-    	  }
-
-    	  //grab the inDelay from the next item to see how long to wait before showing it
-        setTimeout(showNext, aAnimParams[nCurIndex].inDelay);    	  
-    	}
-    	
-    	function showOutClass(div, outClass){
-    	  $("#" + div).removeClass()
-    	    .addClass(outClass);
-    	}
+    	var timeline = new CSSTimeline(aAnimParams, 2);
     	
     	//note that the inDelay does not apply to the very first item. Its animation is shown immediately. Otherwise, here we'd call showNext on a timeout
-    	showNext();
+    	timeline.play();
 
     });
   </script>
