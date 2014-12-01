@@ -30,9 +30,9 @@
     	{str:"", 
     	  inClass:"square squareToCircle", div:"text1", inDelay:0, outDelay:4500, outClass:"bounceOutDown square"},//now animate that square to a circle and back, then bounce it out
     	{str:"", 
-    	  inClass:"slideLeft circleLeft", div:"text1", inDelay:6000},
+    	  inClass:"slideLeft circle", div:"text1", inDelay:6000},
     	{str:"", 
-    	  inClass:"squishedCircle", div:"text1", inDelay:2000, outDelay:200,}
+    	  inClass:"squishedCircle", div:"text1", inDelay:1000, outDelay:100, outClass:"slideRight circle"}
     	        ];
 
     	function showNext(){    		
@@ -44,9 +44,18 @@
     		  .removeClass()
     		  .addClass(oCurItem.inClass);
     		
+        if(oCurItem.outDelay){
+            setTimeout(function(){
+              console.log(oCurItem.outClass);
+              showOutClass(oCurItem.div, oCurItem.outClass);
+            }, oCurItem.outDelay);
+          }
+    		
+    		
     	  nCurIndex++;
-    	  if(nCurIndex === aAnimParams.length){
+    	  if(nCurIndex === aAnimParams.length){//if we're at the end of the timeline
     		  
+    		  //and if repeatCount isn't -1 (infinite) AND we've fulfilled every iteration to match our repeat count, then we are done. Get out before calling showNext() 
     		  if(nRepeatCount > -1 && nRepeatCount === nIteration){
     			  return;
     		  }
@@ -54,18 +63,12 @@
     		  nCurIndex = 0;
     		  nIteration++
     	  }
-    	  
+
     	  //grab the inDelay from the next item to see how long to wait before showing it
-    	  setTimeout(showNext, aAnimParams[nCurIndex].inDelay);
-    	  
-    	  if(oCurItem.outDelay){
-      	  setTimeout(function(){
-      		  hideDiv(oCurItem.div, oCurItem.outClass);
-      	  }, oCurItem.outDelay);
-    	  }
+        setTimeout(showNext, aAnimParams[nCurIndex].inDelay);    	  
     	}
     	
-    	function hideDiv(div, outClass){
+    	function showOutClass(div, outClass){
     	  $("#" + div).removeClass()
     	    .addClass(outClass);
     	}

@@ -8,7 +8,7 @@ body
   font-size: 15px
   padding: 0px
   margin: 0px
-  
+
 #wrapper
   background-color: #ccc
   width: 100%
@@ -57,7 +57,11 @@ body
     #{$vendor}animation: square-to-circle 2s .5s infinite cubic-bezier(1,0.15,.29,1.21) alternate both
     
   .slideLeft
-    #{$vendor}animation: slideLeft 2s ease-in both
+    #{$vendor}animation: slideLeft 1s linear both
+  
+  .slideRight
+    #{$vendor}animation: slideRight 1s linear both
+    
 
 .square
   margin-top: 50px
@@ -67,7 +71,7 @@ body
   height: 100px
   background-color: coral
   
-.circleLeft
+.circle
   margin-top: 50px
   width: 100px
   height: 100px
@@ -76,7 +80,7 @@ body
 
 .squishedCircle
   margin-top: 50px
-  width: 50px
+  width: 26px
   height: 100px
   background-color: coral
   border-radius: 50%

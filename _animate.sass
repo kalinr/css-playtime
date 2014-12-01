@@ -1687,14 +1687,16 @@
   @include slideLeft("")
   
   
-
-    
 @mixin slideRight($vendor)
   0%
-    opacity: 0
+    width: 26px
     #{$vendor}transform: translateX(0)
+  20%
+    width: 100px
+  30%
+    width: 150px
+    height: 75px
   100%
-    opacity: 1
     #{$vendor}transform: translateX(2000px)
     
 @-webkit-keyframes slideRight
@@ -1711,23 +1713,3 @@
 
 @keyframes slideRight
   @include slideRight("")
-  
-  
-  
-$includedAnimations: "tada" "slideLeft" "slideRight"
-
-@$each $includedAnimation in $includedAnimations
-  @-webkit-keyframes anim#{$includedAnimation}
-    @include #{$includedAnimation}("-webkit-")
-
-  @-moz-keyframes anim#{$includedAnimation}
-    @include anim#{$includedAnimation}("-moz-")
-  
-  @-ms-keyframes #{$includedAnimation}
-    @include anim#{$includedAnimation}("-ms-")
-
-  @-o-keyframes anim#{$includedAnimation}
-    @include anim#{$includedAnimation}("-o-")
-
-  @keyframes anim#{$includedAnimation}
-    @include anim#{$includedAnimation}("")
