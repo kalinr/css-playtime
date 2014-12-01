@@ -7,12 +7,12 @@
   <meta name="description" content="Just Kalin's place to play around with CSS animations" />
   <meta name="robots" content="index, follow" />
   <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="CSSTimeline.js" type="text/javascript" charset="utf-8"></script>
-  
+  <script src="CSSTimeline_vanilla.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
     "use strict";
-    $(document).ready(function(){
+    window.onload = function(){
+    	
+    	//build an array of objects, each representing a string or shape to be animated in and out
     	var aAnimParams = [
       {str:"CSS Playground!", 
     	  inClass:"tada text_holder title", div:"text0", inDelay:8000, outDelay:11000, outClass:"bounceOutUp text_holder title"},
@@ -39,7 +39,7 @@
     	//note that the inDelay does not apply to the very first item. Its animation is shown immediately. Otherwise, here we'd call showNext on a timeout
     	timeline.play();
 
-    });
+    };
   </script>
 </head>
 

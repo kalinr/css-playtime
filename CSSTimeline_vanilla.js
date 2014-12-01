@@ -2,7 +2,6 @@
  * CSSTimeline class
  * @class
  * @classdesc Use CSSTimeline to cycle through a series of CSS classes on elements. usually used for animations.
- *   This version requires jQuery. Use CSSTimeline_vanilla.js for a pure JavaScript version
  * @param {array} aAnimParams an array of objects, each containing properties representing our animations
  *   each object can have these properties:
  *     str: a string that will be used as the content of the element 
@@ -25,7 +24,7 @@ function CSSTimeline(aAnimParams, nRepeatCount){
 
   this.showNext = function(){
     var oCurItem = this.aAnimParams[this.nCurIndex],
-    oCurDiv = $("#" + oCurItem.div),
+    oCurDiv = document.getElementById(oCurItem.div), //$("#" + oCurItem.div),
     self = this;
     
     if(this.bPaused){
@@ -35,9 +34,8 @@ function CSSTimeline(aAnimParams, nRepeatCount){
     //TODO: change the setting of the text so that we use shortcodes in the HTML that refer to properties of our oCurItem
     //that way we can add any string to any part of any HTML element instead of being stuck with just one string per element
     //insert string into div and remove all classes
-    oCurDiv.text(oCurItem.str)
-      .removeClass()
-      .addClass(oCurItem.inClass);
+    oCurDiv.innerHTML = oCurItem.str;
+    oCurDiv.className = oCurItem.inClass;
     
     if(oCurItem.outDelay){
       setTimeout(function(){self.showOutClass.call(self, oCurItem.div, oCurItem.outClass)}, oCurItem.outDelay);
@@ -65,8 +63,7 @@ function CSSTimeline(aAnimParams, nRepeatCount){
    * @param {string} outClass the class or space-separated list of classes to apply to the element
    */
   this.showOutClass = function(div, outClass){
-    $("#" + div).removeClass()
-      .addClass(outClass);
+	document.getElementById(div).className = outClass;
   }
   
   /**
