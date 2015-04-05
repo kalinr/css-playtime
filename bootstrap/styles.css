@@ -1,0 +1,12 @@
+.slideshow {
+
+}
+
+#myCarousel {
+  height: 650px;
+}
+
+img{
+  display: block;
+  margin: auto;
+}
